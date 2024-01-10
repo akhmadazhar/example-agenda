@@ -18,11 +18,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        // 'nik',
+        'nik',
         'email',
-        // 'username',
+        'username',
         'password',
-        // 'id_jabatan', // Tambahkan kolom id_jabatan ke atribut yang dapat diisi secara massal
+        'id_jabatan', // Tambahkan kolom id_jabatan ke atribut yang dapat diisi secara massal
     ];
 
     /**

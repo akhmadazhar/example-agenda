@@ -9,17 +9,27 @@ class FullCalenderController extends Controller
 {
     public function index(Request $request)
     {
-
-        if ($request->ajax()) {
-
-            $data = Event::whereDate('start', '>=', $request->start)
-                ->whereDate('end',   '<=', $request->end)
-                ->get(['id', 'title', 'start', 'end']);
-
-            return response()->json($data);
-        }
-
         return view('event.index');
+    }
+
+    public function listEvent(Request $request)
+    {
+
+        $start = date('Y-m-d', strtotime($request->start));
+        $end = date('Y-m-d', strtotime($request->end));
+
+
+        $data = Event::whereDate('start', '>=', $start)
+            ->whereDate('end',   '<=', $end)
+            ->get()
+            ->map(fn ($item) => [
+                'id' => $item->id,
+                'title' => $item->title,
+                'start' => $item->start,
+                'end' => $item->end,
+            ]);
+
+        return response()->json($data);
     }
 
     /**

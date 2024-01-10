@@ -14,6 +14,18 @@ class AgendaController extends Controller
         return view('agenda.index', compact(['agendas']));
     }
 
+    public function detail($id)
+    {
+        $agenda = Agenda::find($id);
+
+        if (!$agenda) {
+            // Handle jika data tidak ditemukan, contohnya redirect atau menampilkan pesan
+            return redirect()->route('index')->with('error', 'Data not found.');
+        }
+
+        return view('agenda.detail', compact('agenda'));
+    }
+
     function create()
     {
         return view('agenda.create');

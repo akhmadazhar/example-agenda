@@ -50,6 +50,8 @@
     <link rel="stylesheet" href="{{ asset('vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('css/demo.css') }}"/>
 
+{{-- Timeline --}}
+<link rel="stylesheet" href="{{ asset('css/timeline.css') }}"/>
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
 
@@ -57,14 +59,24 @@
 
     <!-- Page CSS -->
 {{-- Full Calendar --}}
-<!-- Include FullCalendar CSS -->
-<link rel="stylesheet" href="{{ asset('node_modules/@fullcalendar/core/main.css') }}">
-<link rel="stylesheet" href="{{ asset('node_modules/@fullcalendar/daygrid/main.css') }}">
-
-<!-- Include FullCalendar JS -->
-<script src="{{ asset('node_modules/@fullcalendar/core/main.js') }}"></script>
-<script src="{{ asset('node_modules/@fullcalendar/daygrid/main.js') }}"></script>
-
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                themeSystem: 'bootstrap5',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                },
+                events: `{{ route('events.list') }}`,
+                editable: true,
+            });
+            calendar.render();
+        });
+    </script>
 
     <!-- Helpers -->
     <script src="{{ asset('vendor/js/helpers.js') }}"></script>
@@ -396,6 +408,7 @@
     </div>
     <!-- / Layout wrapper -->
 
+  
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
@@ -415,8 +428,11 @@
 
     <!-- Page JS -->
     <script src="{{ asset('js/dashboards-analytics.js') }}"></script>
+    <script src="{{ asset('js/ui-toasts.js') }}"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+   
   </body>
 </html>

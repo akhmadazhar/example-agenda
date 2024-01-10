@@ -18,10 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(FullCalenderController::class)->group(function () {
-    Route::get('/event', 'index');
-    Route::post('fullcalenderAjax', 'ajax');
-});
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index']);
@@ -31,11 +27,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/agenda/edit/{id}', [\App\Http\Controllers\AgendaController::class, 'edit'])->name('agenda.edit');
     Route::put('/agenda/{id}', [\App\Http\Controllers\AgendaController::class, 'update']);
     Route::delete('/agenda/{id}', [\App\Http\Controllers\AgendaController::class, 'destroy']);
+    Route::get('/agenda/detail/{id}', [\App\Http\Controllers\AgendaController::class, 'detail'])->name('agenda.detail');
+
 
     Route::get('/jabatan', [\App\Http\Controllers\JabatanController::class, 'index']);
     Route::post('/jabatan', [\App\Http\Controllers\JabatanController::class, 'store']);
     Route::get('/jabatan/create', [\App\Http\Controllers\JabatanController::class, 'create']);
 });
+
+Route::get('event/list', [FullCalenderController::class, 'listEvent'])->name('events.list');
+Route::resource('event', FullCalenderController::class);
 
 
 
