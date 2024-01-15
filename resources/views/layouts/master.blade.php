@@ -202,6 +202,12 @@
                   <div data-i18n="Basic">Jabatan</div>
                 </a>
               </li>
+            <li class="menu-item {{ request()->is('pegawai') ? 'active' : '' }}">
+                <a href="/pegawai" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-user"></i>
+                  <div data-i18n="Basic">Pegawai</div>
+                </a>
+              </li>
 <!-- Layouts -->
 <li class="menu-item">
     <a href="javascript:void(0);" class="menu-link menu-toggle">

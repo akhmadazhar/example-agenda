@@ -37,6 +37,9 @@ Route::get('/jabatan', [\App\Http\Controllers\JabatanController::class, 'index']
 Route::post('/jabatan', [\App\Http\Controllers\JabatanController::class, 'store']);
 Route::get('/jabatan/create', [\App\Http\Controllers\JabatanController::class, 'create']);
 
+Route::get('/pegawai', [\App\Http\Controllers\PegawaiController::class, 'index']);
+
+
 Route::get('event/list', [FullCalenderController::class, 'listEvent'])->name('events.list');
 Route::resource('event', FullCalenderController::class);
 
