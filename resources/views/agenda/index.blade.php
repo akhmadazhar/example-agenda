@@ -16,7 +16,8 @@
                         <th>NIK Pegawai</th>
                         <th>Judul</th>
                         <th>Deskripsi</th>
-                        <th>Tanggal</th>
+                        <th>Start</th>
+                        <th>End</th>
                         <th>Lokasi</th>
                         <th>Status</th>
                         <th>Aksi</th>
@@ -28,7 +29,8 @@
                             <td>{{ $agenda->nik_pegawai }}</td>
                             <td>{{ $agenda->judul }}</td>
                             <td>{{ $agenda->deskripsi }}</td>
-                            <td>{{ $agenda->tanggal }}</td>
+                            <td>{{ $agenda->start }}</td>
+                            <td>{{ $agenda->end }}</td>
                             <td>{{ $agenda->lokasi }}</td>
                             <td>{{ $agenda->status }}</td>
                             <td>

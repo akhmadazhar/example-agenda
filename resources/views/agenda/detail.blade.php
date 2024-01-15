@@ -22,8 +22,12 @@
                         <td>{{ $agenda->deskripsi }}</td>
                     </tr>
                     <tr>
-                        <th>Tanggal</th>
-                        <td>{{ $agenda->tanggal }}</td>
+                        <th>Start</th>
+                        <td>{{ $agenda->start }}</td>
+                    </tr>
+                    <tr>
+                        <th>End</th>
+                        <td>{{ $agenda->end }}</td>
                     </tr>
                     <tr>
                         <th>Lokasi</th>

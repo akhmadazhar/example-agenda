@@ -71,7 +71,13 @@
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
                 },
-                events: `{{ route('events.list') }}`,
+                eventClick: function(info) {
+                    if (info.event.extendedProps.desc) {
+                        // Buka tautan pada deskripsi dalam jendela baru
+                        window.open(info.event.extendedProps.desc, '_blank');
+                    }
+                },
+                events: `{{ route('agendas.list') }}`,
                 editable: true,
             });
             calendar.render();

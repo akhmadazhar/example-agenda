@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
-                    <h6>Add Customer</h6>
+                    <h6>Add Agenda</h6>
                 </div>
                 <div class="card-body px-2 pt-0 pb-2">
                     @if ($errors->any())
@@ -22,7 +22,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="">Nik Pegawai</label>
-                            <input name="nik_pegawai" type="text" class="form-control" id="exampleInputEmail1"
+                            <input name="nik_pegawai" type="number" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" placeholder="NIK">
                         </div>
                         <div class="form-group">
@@ -36,8 +36,13 @@
                                 aria-describedby="emailHelp" placeholder="Deksripsi">
                         </div>
                         <div class="form-group">
-                            <label for="">Tanggal</label>
-                            <input name="tanggal" type="date" class="form-control" id="exampleInputEmail1"
+                            <label for="">Start</label>
+                            <input name="start" type="datetime-local" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">End</label>
+                            <input name="end" type="datetime-local" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" placeholder="">
                         </div>
                         <div class="form-group">

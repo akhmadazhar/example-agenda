@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('agendas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('nik_pegawai');
+            $table->unsignedBigInteger('nik_pegawai');
             $table->string('judul');
             $table->text('deskripsi');
-            $table->string('tanggal');
+            $table->datetime('start');
+            $table->datetime('end');
             $table->string('lokasi');
             $table->string('status');
             $table->timestamps();

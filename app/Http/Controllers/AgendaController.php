@@ -36,7 +36,8 @@ class AgendaController extends Controller
             'nik_pegawai' => 'required',
             'judul' => 'required',
             'deskripsi' => 'required',
-            'tanggal' => 'required',
+            'start' => 'required',
+            'end' => 'required',
             'lokasi' => 'required',
             'status' => 'required',
         ]);
@@ -45,7 +46,8 @@ class AgendaController extends Controller
             'nik_pegawai' => $request->nik_pegawai,
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'tanggal' => $request->tanggal,
+            'start' => $request->start,
+            'end' => $request->end,
             'lokasi' => $request->lokasi,
             'status' => $request->status
         ]);
@@ -65,7 +67,8 @@ class AgendaController extends Controller
             'nik_pegawai' => 'required',
             'judul' => 'required',
             'deskripsi' => 'required',
-            'tanggal' => 'required',
+            'start' => 'required',
+            'end' => 'required',
             'lokasi' => 'required',
             'status' => 'required',
         ]);
@@ -74,7 +77,8 @@ class AgendaController extends Controller
             'nik_pegawai' => $request->nik_pegawai,
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'tanggal' => $request->tanggal,
+            'start' => $request->start,
+            'end' => $request->end,
             'lokasi' => $request->lokasi,
             'status' => $request->status
         ]);
