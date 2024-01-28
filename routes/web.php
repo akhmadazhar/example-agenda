@@ -38,6 +38,8 @@ Route::post('/jabatan', [\App\Http\Controllers\JabatanController::class, 'store'
 Route::get('/jabatan/create', [\App\Http\Controllers\JabatanController::class, 'create']);
 
 Route::get('/pegawai', [\App\Http\Controllers\PegawaiController::class, 'index']);
+Route::post('/pegawai', [\App\Http\Controllers\PegawaiController::class, 'store']);
+Route::get('/pegawai/create', [\App\Http\Controllers\PegawaiController::class, 'create']);
 
 
 Route::get('event/list', [FullCalenderController::class, 'listEvent'])->name('events.list');

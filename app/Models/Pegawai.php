@@ -9,4 +9,9 @@ class Pegawai extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function Jabatan()
+    {
+        return $this->belongsTo(Jabatan::class, 'id_jabatan');
+    }
 }

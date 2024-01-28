@@ -9,7 +9,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID Jabatan</th>
+                        <th>Jabatan</th>
                         <th>Nik</th>
                         <th>Name</th>
                         <th>Email</th>
@@ -19,7 +19,7 @@
                 <tbody class="table-border-bottom-0">
                     @foreach ($users as $user)
                         <tr>
-                            <td>{{ $user->id_jabatan }}</td>
+                            <td>{{ optional($user->jabatan)->nama_jabatan }}</td>
                             <td>{{ $user->nik }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
