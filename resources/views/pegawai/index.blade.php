@@ -19,7 +19,7 @@
                 <tbody class="table-border-bottom-0">
                     @foreach ($users as $user)
                         <tr>
-                            <td>{{ optional($user->jabatan)->nama_jabatan }}</td>
+                            <td>{{ $user->jabatan->nama_jabatan ?? '-' }}</td>
                             <td>{{ $user->nik }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>

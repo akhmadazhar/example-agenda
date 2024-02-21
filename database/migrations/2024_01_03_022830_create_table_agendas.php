@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('agendas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('nik_pegawai');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('nik');
             $table->string('judul');
             $table->text('deskripsi');
             $table->datetime('start');

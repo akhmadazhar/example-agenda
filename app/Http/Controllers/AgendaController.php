@@ -3,13 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agenda;
+use App\Models\Jabatan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AgendaController extends Controller
 {
     public function index()
     {
-        $agendas = Agenda::all();
+
+        $agendas = Agenda::with('user')->get();
+        foreach ($agendas as $agenda) {
+            echo optional($agenda->user)->name ?? '';
+        }
+        // $users = User::with('jabatan')->get();
+        // foreach ($users as $user) {
+        //     echo optional($user->jabatan)->nama_jabatan ?? '';
+        // }
 
         return view('agenda.index', compact(['agendas']));
     }
@@ -28,30 +38,33 @@ class AgendaController extends Controller
 
     function create()
     {
-        return view('agenda.create');
+        $users = User::where('id_jabatan', '!=', 0)->get();
+
+        return view('agenda.create', compact(['users']));
     }
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
-            'nik_pegawai' => 'required',
+            'nik' => 'required',
             'judul' => 'required',
             'deskripsi' => 'required',
             'start' => 'required',
             'end' => 'required',
             'lokasi' => 'required',
-            'status' => 'required',
-        ]);
 
-        Agenda::create([
-            'nik_pegawai' => $request->nik_pegawai,
+        ]);
+        $user = User::where('nik', $request->nik)->first();
+        $agenda = Agenda::create([
+            'nik' => $request->nik,
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
             'start' => $request->start,
             'end' => $request->end,
             'lokasi' => $request->lokasi,
-            'status' => $request->status
+            'status' => 'Diajukan',
+            'user_id' => $user->id // Set user_id ke ID pengguna yang ditemukan
         ]);
-
         return redirect('/agenda');
     }
 
@@ -64,17 +77,17 @@ class AgendaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nik_pegawai' => 'required',
+            'nik' => 'required',
             'judul' => 'required',
             'deskripsi' => 'required',
             'start' => 'required',
             'end' => 'required',
             'lokasi' => 'required',
-            'status' => 'required',
+
         ]);
         $agenda = Agenda::find($id);
         $agenda->update([
-            'nik_pegawai' => $request->nik_pegawai,
+            'nik' => $request->nik,
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
             'start' => $request->start,

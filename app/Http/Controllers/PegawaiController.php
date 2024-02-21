@@ -13,9 +13,7 @@ class PegawaiController extends Controller
     public function index()
     {
         $users = User::with('jabatan')->get();
-        foreach ($users as $user) {
-            echo optional($user->jabatan)->nama_jabatan ?? '';
-        }
+
         return view('pegawai.index', compact(['users']));
     }
 
@@ -44,5 +42,6 @@ class PegawaiController extends Controller
             'username' => $request->username,
             'password' => Hash::make($request['password']),
         ]);
+        return redirect('/pegawai');
     }
 }

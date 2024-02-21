@@ -14,6 +14,7 @@
                 <thead>
                     <tr>
                         <th>NIK Pegawai</th>
+                        <th>Nama Pegawai</th>
                         <th>Judul</th>
                         <th>Deskripsi</th>
                         <th>Start</th>
@@ -26,7 +27,9 @@
                 <tbody class="table-border-bottom-0">
                     @foreach ($agendas as $agenda)
                         <tr>
-                            <td>{{ $agenda->nik_pegawai }}</td>
+                            <td>{{ $agenda->nik }}</td>
+                            {{-- <td>{{ $agenda->user->name ?? 'ww' }}</td> --}}
+                            <td>{{ optional($agenda->user)->name ?? 'wwa' }}</td>
                             <td>{{ $agenda->judul }}</td>
                             <td>{{ $agenda->deskripsi }}</td>
                             <td>{{ $agenda->start }}</td>

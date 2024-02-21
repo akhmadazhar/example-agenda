@@ -11,7 +11,11 @@
                 <tbody>
                     <tr>
                         <th>NIK Pegawai</th>
-                        <td>{{ $agenda->nik_pegawai }}</td>
+                        <td>{{ $agenda->nik }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nama Pegawai</th>
+                        <td>{{ $agenda->user->name }}</td>
                     </tr>
                     <tr>
                         <th>Judul</th>

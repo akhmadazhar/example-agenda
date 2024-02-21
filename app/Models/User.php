@@ -22,7 +22,7 @@ class User extends Authenticatable
         'email',
         'username',
         'password',
-        'id_jabatan', // Tambahkan kolom id_jabatan ke atribut yang dapat diisi secara massal
+        'id_jabatan',
     ];
 
     /**
@@ -47,5 +47,10 @@ class User extends Authenticatable
     public function jabatan()
     {
         return $this->belongsTo(Jabatan::class, 'id_jabatan');
+    }
+
+    public function agenda()
+    {
+        return $this->hasMany(Agenda::class, 'user_id');
     }
 }

@@ -22,8 +22,12 @@
                         @csrf
                         <div class="form-group">
                             <label for="">Nik Pegawai</label>
-                            <input name="nik_pegawai" type="number" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="NIK">
+                            <select name="nik" id="nikpegawaiSelect" class="form-control">
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->nik }}">{{ $user->name }} -
+                                        {{ optional($user->jabatan)->nama_jabatan ?? '' }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">Judul</label>
@@ -49,11 +53,6 @@
                             <label for="">Lokasi</label>
                             <input name="lokasi" type="text" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" placeholder="Lokasi">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Status</label>
-                            <input name="status" type="text" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Status">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('id_jabatan')->after('id');
             $table->string('nik')->after('id_jabatan');
+            // $table->unsignedBigInteger('id_agenda')->nullable()->default(null)->after('id_jabatan');
             $table->string('username')->after('email');
         });
     }
