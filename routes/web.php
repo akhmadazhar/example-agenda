@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FullCalenderController;
 use Illuminate\Support\Facades\Route;
@@ -44,15 +45,14 @@ Route::get('/agenda', [\App\Http\Controllers\AgendaController::class, 'index']);
 Route::get('/agenda/detail/{id}', [\App\Http\Controllers\AgendaController::class, 'detail'])->name('agenda.detail');
 
 
-
-
-
 Route::get('event/list', [FullCalenderController::class, 'listEvent'])->name('events.list');
 Route::resource('event', FullCalenderController::class);
 
 Route::get('dashboard/list', [DashboardController::class, 'listEvent'])->name('agendas.list');
 Route::resource('dashboard', DashboardController::class);
 
+//New Update Status
+Route::put('/agenda/{id}/update-status', [AgendaController::class, 'updateStatus'])->name('agenda.updateStatus');
 
 
 Auth::routes();

@@ -11,17 +11,17 @@ class AgendaController extends Controller
 {
     public function index()
     {
+        $user = auth()->user();
 
-        $agendas = Agenda::with('user')->get();
-        foreach ($agendas as $agenda) {
-            echo optional($agenda->user)->name ?? '';
+        // Jika user adalah admin (dengan ID 0), maka tampilkan semua agenda
+        if ($user->id === 0) {
+            $agendas = Agenda::with('user')->get();
+        } else {
+            // Jika bukan admin, hanya tampilkan agenda yang dimiliki oleh pengguna tersebut
+            $agendas = Agenda::where('user_id', $user->id)->where('status', 'diajukan')->get();
         }
-        // $users = User::with('jabatan')->get();
-        // foreach ($users as $user) {
-        //     echo optional($user->jabatan)->nama_jabatan ?? '';
-        // }
 
-        return view('agenda.index', compact(['agendas']));
+        return view('agenda.index', compact('agendas'));
     }
 
     public function detail($id)
@@ -104,5 +104,19 @@ class AgendaController extends Controller
         $agenda->delete();
 
         return redirect('/agenda');
+    }
+
+    public function updateStatus($id)
+    {
+        $agenda = Agenda::find($id);
+        if (!$agenda) {
+            // Handle jika data tidak ditemukan, contohnya redirect atau menampilkan pesan
+            return redirect()->route('agenda.index')->with('error', 'Data not found.');
+        }
+
+        $agenda->status = 'Dilaksanakan';
+        $agenda->save();
+
+        return redirect()->back()->with('success', 'Agenda berhasil diverifikasi.');
     }
 }

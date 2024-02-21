@@ -43,6 +43,18 @@
                     </tr>
                 </tbody>
             </table>
+            <br>
+            @if ($agenda->status === 'Diajukan')
+                <div class="gap-2 d-flex justify-content-md-center">
+                    <form action="{{ route('agenda.updateStatus', ['id' => $agenda->id]) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" class="btn btn-primary">Verifikasi Kehadiran</button>
+                    </form>
+                    <!-- Tombol Disposisi -->
+                    <a href="agenda/create" class="btn btn-primary">Disposisikan</a>
+                </div>
+            @endif
         </div>
         <div class="row">
             <div class="col-md-12">
