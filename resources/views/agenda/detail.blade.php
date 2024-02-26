@@ -63,11 +63,22 @@
                         <h3>Riwayat perjalanan</h3>
                         <div id="content">
                             <ul class="timeline">
-
-                                <li class="event" data-date="12/03/2023 - 20:52">
-                                    <h3>Dimasz → Udin</h3>
-                                    <p>Catatan : Tolong gantikan sir</p>
-                                </li>
+                                @foreach ($alurs as $alur)
+                                    <li class="event" data-date="{{ $alur->created_at }}">
+                                        <h3>{{ $alur->pegawai_before }} → {{ $alur->pegawai_after }}
+                                            ({{ $agenda->user->jabatan->nama_jabatan }})
+                                        </h3>
+                                        <p>{{ $alur->catatan }}</p>
+                                    </li>
+                                    @if ($agenda->status === 'Selesai')
+                                        <li class="event" data-date="{{ $alur->created_at }}">
+                                            <h3>{{ $alur->pegawai_after }} ({{ $agenda->user->jabatan->nama_jabatan }}) →
+                                                Yang Akan Menghadiri
+                                            </h3>
+                                            <p>{{ $alur->catatan }}</p>
+                                        </li>
+                                    @endif
+                                @endforeach
                             </ul>
                         </div>
                     </div>

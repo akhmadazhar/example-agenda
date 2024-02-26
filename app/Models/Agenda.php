@@ -15,4 +15,9 @@ class Agenda extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function alur()
+    {
+        return $this->hasMany(Alur::class, 'id_agenda', 'id');
+    }
 }
